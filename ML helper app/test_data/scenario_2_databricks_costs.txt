@@ -1,0 +1,116 @@
+Customer Meeting Notes - TechStart Financial Services
+Date: December 3, 2024
+AE: David Park | SE: Lisa Wang
+Customer Contacts: Mark Thompson (VP of Data & Analytics), Rachel Green (Head of ML Engineering)
+
+=== COMPANY BACKGROUND ===
+- TechStart Financial Services - Fintech startup, $850M valuation
+- Digital lending platform, personal loans and credit lines
+- 450 employees, 40-person data/engineering team
+- Processing 100K+ loan applications monthly
+
+=== CURRENT DATABRICKS ENVIRONMENT ===
+"We went all-in on Databricks 18 months ago thinking it would solve all our ML problems, but the costs are spiraling out of control," - Mark Thompson
+
+CURRENT SETUP:
+- Databricks on AWS (Premium tier)
+- Unity Catalog for data governance
+- MLflow for experiment tracking
+- Delta Lake for data storage
+- 12 clusters running various workloads
+- Spark-based ETL pipelines and ML training
+
+=== COST EXPLOSION ISSUES ===
+
+"Our Databricks bill last month was $180K. Six months ago it was $45K. We're burning through our Series C funding on infrastructure costs," - Mark Thompson
+
+SPECIFIC COST DRIVERS:
+1. "Cluster management is a disaster. Our data scientists spin up high-memory clusters for experimentation and forget to shut them down. We had a cluster running for 3 weeks over Thanksgiving that cost us $23K."
+
+2. "The Databricks Unit (DBU) pricing model is impossible to predict. We budgeted $60K/month and we're consistently hitting $150K+. I can't explain to our CFO why our compute costs tripled."
+
+3. "Auto-scaling doesn't work well for our workloads. We either over-provision and waste money, or under-provision and jobs fail."
+
+=== TECHNICAL COMPLEXITY CHALLENGES ===
+
+"Half our team spends their time optimizing Spark configurations instead of building models," - Rachel Green
+
+OPERATIONAL PAIN POINTS:
+1. "Spark performance tuning is an art, not a science. Every new hire needs 3 months just to understand how to configure clusters properly."
+
+2. "Data lineage tracking is broken. Unity Catalog helps, but we still can't trace model predictions back to source data reliably."
+
+3. "MLOps is a nightmare. Getting models from notebooks to production requires custom Spark jobs and complex CI/CD pipelines."
+
+4. "Our junior data scientists can't be productive because Spark has such a steep learning curve."
+
+=== SPECIFIC ML USE CASES ===
+
+**Credit Risk Modeling:**
+- Processing loan application data, credit bureau feeds, bank transactions
+- Currently using Spark MLlib and custom XGBoost implementations  
+- Models retrained daily on 2+ years of historical data
+- Need millisecond response times for real-time decisions
+
+**Fraud Detection:**
+- Real-time transaction monitoring
+- Feature engineering on streaming data using Spark Structured Streaming
+- Graph neural networks for relationship analysis
+- Currently struggling with latency requirements (need <50ms)
+
+**Customer Lifetime Value:**
+- Batch processing of customer behavior data
+- Churn prediction and upsell opportunity identification
+- Monthly model retraining on full customer dataset
+- Complex feature engineering with 200+ variables
+
+=== GOVERNANCE AND COMPLIANCE ISSUES ===
+
+"We're a regulated financial services company. We need bulletproof governance, and Databricks' governance story has gaps," - Mark Thompson
+
+COMPLIANCE CHALLENGES:
+1. "Model explainability is difficult with Spark ML pipelines. Regulators want to understand every feature transformation."
+
+2. "Data access controls are complex to manage across multiple clusters and workspaces."
+
+3. "Audit trails for model changes and data access are scattered across multiple systems."
+
+=== BUSINESS PRESSURE ===
+
+"Our board is asking hard questions about our infrastructure spend. We need to show ML ROI, but 40% of our budget goes to keeping the lights on," - Mark Thompson
+
+CURRENT METRICS:
+- ML infrastructure: $2M annually (projected)
+- Data team productivity: down 30% due to operational overhead
+- Time to production for new models: 6-8 weeks
+- Model accuracy: good, but improvement velocity is slow
+
+=== EVALUATION CRITERIA ===
+
+"We need a platform that our team can actually use productively, not one that requires a PhD in distributed computing," - Rachel Green
+
+REQUIREMENTS:
+1. Predictable, transparent pricing
+2. Faster time to production (<2 weeks for new models)
+3. Better governance and lineage tracking
+4. Reduced operational complexity
+5. Support for real-time and batch inference
+6. Strong compliance and audit capabilities
+
+=== DECISION DRIVERS ===
+- CEO mandate to reduce infrastructure costs by 40%
+- Board pressure to show ML ROI improvement
+- Regulatory audit coming in Q2 2025
+- Need to hire 15 more data scientists but can't afford current per-person infrastructure costs
+
+=== COMPETITIVE CONSIDERATIONS ===
+"We looked at staying on AWS with SageMaker, but that's just trading one set of problems for another."
+"Vertex AI on GCP is interesting, but we're committed to AWS for everything else."
+"We need something that works with our existing AWS data ecosystem but eliminates the Spark complexity."
+
+=== KEY QUOTES ===
+"Databricks promised us a unified analytics platform, but we ended up with a very expensive Spark cluster management problem." - Mark Thompson
+
+"I have brilliant data scientists who spend more time fighting with cluster configurations than building models. It's soul-crushing." - Rachel Green
+
+"If we could cut our infrastructure costs in half and double our model deployment velocity, we'd be unstoppable in the market." - Mark Thompson 

@@ -1,0 +1,39 @@
+# Snowflake Authentication - Keep private keys secure
+.snowflake/keys/
+.snowflake/connections.toml
+
+# Allow the README and setup script to be committed
+!.snowflake/README.md
+!.snowflake/setup_new_project.sh
+!.snowflake/connections.toml.template
+
+# VS Code / Cursor
+.vscode/
+.cursor/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo 

@@ -1,0 +1,81 @@
+Customer Discovery Call Notes - Global Manufacturing Corp
+Date: November 15, 2024
+AE: Sarah Johnson | SE: Mike Chen
+Customer Contacts: Dr. Emily Rodriguez (Chief Data Officer), Jason Kim (ML Engineering Lead)
+
+=== COMPANY OVERVIEW ===
+- Global Manufacturing Corp - $2.3B revenue, 15,000 employees
+- Manufacturing equipment and industrial automation
+- Heavy focus on predictive maintenance, quality control, and supply chain optimization
+- Data team: 25 data scientists, 8 ML engineers, 3 MLOps specialists
+
+=== CURRENT ML INFRASTRUCTURE ===
+"We're heavily invested in AWS SageMaker for our ML workloads, but honestly, it's becoming a nightmare to manage," - Dr. Rodriguez
+
+CURRENT SETUP:
+- AWS SageMaker for model training and deployment
+- S3 data lakes with 50TB+ of sensor data, production logs
+- RedShift for some analytics, but most ML data stays in S3
+- EMR clusters for large-scale data processing
+- Multiple SageMaker endpoints for real-time predictions
+
+PAIN POINTS IDENTIFIED:
+1. "The data movement costs are killing us. We're spending $40K/month just moving data between S3, RedShift, and SageMaker. Every time we want to run a new experiment, it's a 2-3 day process just to get the data in the right format and location." - Jason Kim
+
+2. "Our data scientists spend 70% of their time on infrastructure setup instead of actual modeling. Setting up SageMaker notebooks, configuring IAM roles, managing Docker containers - it's incredibly complex." - Dr. Rodriguez
+
+3. "We have 47 different ML models in production, and managing all the SageMaker endpoints is a full-time job for our MLOps team. The costs are unpredictable - last month our inference costs spiked to $80K because of some unexpected traffic."
+
+4. "Collaboration is terrible. Each data scientist works in their own SageMaker notebook instance, and we have no visibility into what models are being built or how they're performing until deployment."
+
+=== SPECIFIC USE CASES ===
+
+**Predictive Maintenance Models:**
+- Analyzing vibration, temperature, and pressure sensor data
+- Currently using XGBoost and Random Forest models
+- Need to predict equipment failures 24-48 hours in advance
+- Processing 500GB of new sensor data daily
+
+**Quality Control AI:**
+- Computer vision models analyzing product images
+- Using TensorFlow and PyTorch
+- Need real-time inference on production line (< 100ms latency)
+- Currently struggling with SageMaker endpoint scaling
+
+**Supply Chain Forecasting:**
+- Demand forecasting across 200+ product lines
+- Historical sales, weather, economic indicators
+- Currently using SageMaker built-in algorithms
+- Models retrained weekly
+
+=== TECHNICAL CHALLENGES MENTIONED ===
+
+"Our biggest frustration is the architecture complexity. We have data in RedShift for business analytics, but then we have to move it to S3 for ML training, then back to RedShift for business consumption. It's a mess." - Jason Kim
+
+"The SageMaker Studio notebooks are slow and expensive. We're paying for idle compute 60% of the time because scientists forget to shut down instances."
+
+"Model versioning and lineage tracking is a disaster. We built custom solutions on top of SageMaker Model Registry, but it's still not enterprise-ready."
+
+"Cost transparency is non-existent. I can't tell leadership exactly what each ML use case costs us per month."
+
+=== BUSINESS IMPACT ===
+- Current ML infrastructure budget: $2.1M annually
+- 6-month roadmap includes 15 new ML use cases
+- ROI on current ML projects: estimated 300% but hard to measure due to infrastructure complexity
+- Looking to standardize on single platform for governance and cost control
+
+=== DECISION TIMELINE ===
+- Evaluating alternatives by Q1 2025
+- Budget approved for platform migration if business case is strong
+- Need solution that reduces operational overhead by 50%
+- Must support both batch and real-time inference
+- Strong governance and lineage tracking requirements
+
+=== COMPETITIVE LANDSCAPE ===
+"We've looked at Databricks, but the Spark complexity scares us. We want something simpler, not more complex."
+"Azure ML is in consideration due to existing Microsoft partnership, but we're multi-cloud and don't want vendor lock-in."
+
+=== KEY QUOTES ===
+"If we could eliminate the data movement costs and reduce our ML infrastructure complexity by half, that would be transformational for our team." - Dr. Rodriguez
+
+"Our data scientists should be building models, not managing infrastructure. We need a platform that just works." - Jason Kim 

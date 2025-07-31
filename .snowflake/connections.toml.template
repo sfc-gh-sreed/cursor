@@ -1,0 +1,39 @@
+# Snowflake Connections Template
+# Copy this file to connections.toml and fill in your actual values
+# DO NOT commit the actual connections.toml file to git!
+
+# Primary connection using key-pair authentication (RECOMMENDED)
+[DEFAULT_CONNECTION]
+name = "DEFAULT_CONNECTION"
+account = "your-account-identifier"
+user = "your-username"
+authenticator = "SNOWFLAKE_JWT"
+private_key_path = "/path/to/your/project/.snowflake/keys/snowflake_rsa_key.pem"
+warehouse = "your-warehouse"
+database = "your-database"
+schema = "your-schema"
+role = "your-role"
+
+# Example template for project-specific connections
+[PROJECT_CONNECTION]
+name = "PROJECT_CONNECTION"
+account = "your-account-identifier"
+user = "your-username"
+authenticator = "SNOWFLAKE_JWT"
+private_key_path = "/path/to/your/project/.snowflake/keys/snowflake_rsa_key.pem"
+warehouse = "project-specific-warehouse"
+database = "project-specific-database"
+schema = "your-schema"
+role = "project-specific-role"
+
+# Alternative: Password-based authentication (less secure)
+# [PASSWORD_CONNECTION]
+# name = "PASSWORD_CONNECTION"
+# account = "your-account-identifier"
+# user = "your-username"
+# authenticator = "snowflake"
+# password = "your-password"
+# warehouse = "your-warehouse"
+# database = "your-database"
+# schema = "your-schema"
+# role = "your-role" 

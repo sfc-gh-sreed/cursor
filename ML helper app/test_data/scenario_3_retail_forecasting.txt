@@ -1,0 +1,122 @@
+Customer Call Summary - Alpine Outdoor Retail
+Date: January 8, 2025
+AE: Jennifer Martinez | SE: Tom Wilson
+Customer Contacts: Susan Chen (CFO), Brian Rodriguez (Head of Merchandising)
+
+=== COMPANY OVERVIEW ===
+- Alpine Outdoor Retail - Regional outdoor gear retailer
+- $120M annual revenue, 85 stores across Mountain West region
+- Family-owned business, 50 years in operation
+- Small data team: 2 business analysts, 1 data analyst
+- Current tech stack: Snowflake for data warehouse, Tableau for reporting
+
+=== CURRENT FORECASTING CHALLENGES ===
+
+"We're still doing our demand forecasting in Excel spreadsheets, and it's killing us during peak seasons," - Susan Chen
+
+CURRENT PROCESS:
+- Manual Excel-based forecasting by product category
+- Brian's team spends 40 hours per week updating forecasts
+- Seasonal adjustments based on "gut feel" and historical averages
+- Inventory decisions made with 60-day lead times
+
+PAIN POINTS:
+1. "Last winter, we were 40% overstocked on ski equipment because our forecast was way off. We had to do deep discounts that crushed our margins." - Brian Rodriguez
+
+2. "Our current forecasting accuracy is about 65%. Industry best practice is 85%+. Better forecasting would improve our gross margin by 3-4 percentage points."
+
+3. "We have 15 years of sales data in Snowflake, but we're not using any of it for predictive modeling. It's just sitting there."
+
+4. "Weather has a huge impact on our sales, but we can't factor that into our Excel models effectively."
+
+=== BUSINESS IMPACT OF POOR FORECASTING ===
+
+CURRENT METRICS:
+- Forecasting accuracy: 65%
+- Overstock situations: 15-20% of SKUs per season
+- Stockout situations: 10-12% of SKUs per season  
+- Lost sales due to stockouts: estimated $2.8M annually
+- Excess inventory markdowns: $1.9M annually
+
+"If we could get to 85% forecasting accuracy, we'd save $3-4M annually in better inventory management," - Susan Chen
+
+=== SPECIFIC USE CASES ===
+
+**Seasonal Demand Forecasting:**
+- Ski equipment (Nov-Mar peak season)
+- Hiking/camping gear (Apr-Oct peak season)  
+- Hunting equipment (Aug-Dec peak season)
+- Need forecasts by store location and product category
+
+**Weather-Based Adjustments:**
+- Heavy snowfall = ski equipment spike
+- Warm spring = early hiking season
+- Summer heat waves = camping gear demand
+- "A single big snowstorm can increase ski sales 300% in one week"
+
+**New Store Demand Planning:**
+- Opening 3 new stores in 2025
+- Need to predict demand without historical data
+- Market sizing based on demographics and competitor analysis
+
+=== CURRENT DATA SOURCES ===
+
+ALL DATA ALREADY IN SNOWFLAKE:
+- Point-of-sale data (15 years history)
+- Inventory levels and turnover rates
+- Store location and demographic data
+- Supplier lead times and costs
+- Historical weather data (considering weather API integration)
+
+"Everything we need is already in Snowflake. We just need a way to build forecasting models without hiring a data science team," - Susan Chen
+
+=== TECHNICAL REQUIREMENTS ===
+
+CONSTRAINTS:
+- No dedicated data science resources
+- Must work with existing Snowflake investment
+- Business analysts need to understand and maintain models
+- Can't afford complex ML infrastructure
+- Results must be explainable to merchandising team
+
+DESIRED CAPABILITIES:
+- Automated weekly forecast updates
+- Seasonal pattern recognition
+- Weather factor integration
+- Store clustering based on performance patterns
+- Alert system for significant forecast changes
+
+=== BUSINESS CONTEXT ===
+
+"We're competing with big box retailers and online players. Our advantage is local market knowledge and personalized service, but we need better inventory management to stay competitive," - Brian Rodriguez
+
+COMPETITIVE PRESSURE:
+- REI and Dick's Sporting Goods expanding into their markets
+- Online retailers (Amazon, Backcountry) taking market share  
+- Need to maintain 95%+ in-stock rates on popular items
+- Margins under pressure - can't afford excess inventory
+
+=== DECISION CRITERIA ===
+
+"We need a solution that works with our existing Snowflake setup and doesn't require hiring expensive data scientists," - Susan Chen
+
+REQUIREMENTS:
+1. Must integrate seamlessly with Snowflake
+2. Business users can understand and modify forecasts
+3. Implementation in < 30 days
+4. Cost under $50K annually for software/consulting
+5. Proven ROI within 6 months
+
+=== TIMELINE ===
+- Need solution implemented before spring buying season (March 2025)
+- Budget approved for FY2025
+- Success will drive expansion to other analytical use cases
+- Considering Tableau integration for forecast visualization
+
+=== KEY QUOTES ===
+
+"We're not trying to build Netflix-level recommendation engines. We just want accurate demand forecasts that help us buy the right inventory for each store." - Brian Rodriguez
+
+"Our data is clean and ready in Snowflake. We need ML that works with what we have, not a whole new platform." - Susan Chen
+
+"If we can nail demand forecasting, that opens the door for customer analytics, pricing optimization, and other advanced use cases." - Susan Chen 

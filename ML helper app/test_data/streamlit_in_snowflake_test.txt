@@ -1,0 +1,93 @@
+Customer Discovery Call Notes - DataFlow Analytics
+Date: January 15, 2025
+AE: Sarah Thompson | SE: Mike Rodriguez  
+Customer Contacts: Dr. Jennifer Chen (VP of Data Science), Alex Kumar (ML Engineering Director)
+
+=== COMPANY OVERVIEW ===
+- DataFlow Analytics - B2B SaaS company, $500M ARR
+- Provides predictive analytics for supply chain optimization
+- 150 employees, 25-person data science team
+- Currently processing 10TB+ of customer data daily
+
+=== CURRENT ML INFRASTRUCTURE PAIN POINTS ===
+
+"We're drowning in complexity with our current Databricks setup. Our monthly bill went from $80K to $220K in just six months, and I can't even explain to our CFO why." - Dr. Jennifer Chen
+
+CURRENT SETUP:
+- Databricks Premium on AWS for all ML workloads
+- Delta Lake for data storage (500TB+)
+- MLflow for experiment tracking
+- 15 different clusters running various workloads
+- Custom Spark configurations for each use case
+
+SPECIFIC CHALLENGES:
+1. "Cluster management is a nightmare. Our data scientists spend 40% of their time optimizing Spark configurations instead of building models. Every new hire needs 2 months of Spark training before they're productive." - Alex Kumar
+
+2. "The Databricks Unit pricing model is impossible to predict. We budgeted $120K per month but we're consistently hitting $200K+. Auto-scaling either over-provisions and wastes money, or under-provisions and jobs fail."
+
+3. "Data lineage and governance is broken. We can't trace model predictions back to source data reliably, which is a huge compliance risk for our enterprise customers."
+
+4. "Getting models from experimentation to production takes 4-6 weeks because of complex MLOps pipelines and infrastructure dependencies."
+
+=== SPECIFIC ML USE CASES ===
+
+**Supply Chain Demand Forecasting:**
+- Processing customer order history, supplier data, economic indicators
+- Currently using custom Spark MLlib implementations
+- Models retrained daily on 2+ years of historical data
+- Need <100ms response times for real-time recommendations
+
+**Inventory Optimization:**
+- Multi-location inventory allocation across 50+ distribution centers
+- Complex graph neural networks for supply chain relationships
+- Currently struggling with Spark Structured Streaming latency
+
+**Anomaly Detection:**
+- Real-time monitoring of supply chain disruptions
+- Pattern recognition across IoT sensor data
+- Need to process 1M+ events per hour
+
+=== BUSINESS PRESSURE ===
+
+"Our board is questioning our infrastructure spend. We're supposed to be a data company, but 35% of our engineering budget goes to keeping Databricks running instead of building customer value." - Dr. Jennifer Chen
+
+CURRENT METRICS:
+- ML infrastructure: $2.4M annually (and growing)
+- Time to production for new models: 4-6 weeks
+- Data scientist productivity: Down 25% due to infrastructure overhead
+- Customer satisfaction with ML features: Declining due to slow iteration
+
+=== EVALUATION CRITERIA ===
+
+"We need a platform where our data scientists can focus on ML, not infrastructure. Predictable pricing is non-negotiable - our CFO won't approve another cost explosion." - Alex Kumar
+
+REQUIREMENTS:
+1. Transparent, predictable pricing model
+2. Faster time to production (<2 weeks for new models)  
+3. Better data governance and lineage tracking
+4. Reduced operational complexity
+5. Support for both batch and real-time inference
+6. Enterprise-grade security and compliance
+
+=== DECISION TIMELINE ===
+- Evaluating alternatives through Q1 2025
+- CFO mandate to reduce infrastructure costs by 30%
+- Need solution deployed before peak season (Q2)
+- Board review of data strategy in March 2025
+
+=== COMPETITIVE LANDSCAPE ===
+"We looked at staying on AWS with SageMaker, but that's just trading Databricks complexity for AWS complexity. We need something fundamentally simpler."
+
+"Azure ML is in consideration due to existing Microsoft partnership, but we're worried about vendor lock-in and similar complexity issues."
+
+"Our data is already in Snowflake for analytics. If we could do ML where our data lives, that would be ideal."
+
+=== KEY QUOTES ===
+
+"Databricks promised us a unified analytics platform, but we ended up with a very expensive cluster management problem. Our brilliant data scientists are becoming Spark administrators." - Dr. Jennifer Chen
+
+"If we could eliminate the Spark complexity and cut our infrastructure costs in half while doubling our model deployment velocity, we'd dominate our market." - Alex Kumar
+
+"I want our team building the next generation of supply chain AI, not debugging cluster configurations and optimizing Spark jobs." - Dr. Jennifer Chen
+
+"Whatever platform we choose needs to just work. Our customers don't care about our infrastructure - they care about accurate predictions delivered fast." - Alex Kumar 

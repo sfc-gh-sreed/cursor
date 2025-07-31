@@ -1,0 +1,71 @@
+Audio Transcript - Customer Discovery Call
+[This would typically be generated from MP3 upload using Snowflake AI_TRANSCRIBE]
+Recorded: December 15, 2024
+Duration: 32 minutes
+Participants: Alex Rivera (Snowflake AE), Dr. Sarah Kim (Customer CTO), Michael Chen (Customer ML Lead)
+
+---
+
+[00:02:15] Alex Rivera: Thanks for taking the time today, Dr. Kim. Could you tell me about your current machine learning infrastructure and some of the challenges you're facing?
+
+[00:02:28] Dr. Sarah Kim: Absolutely. So we're a healthcare AI company, about 300 employees, and we're doing medical image analysis for radiology workflows. Our big challenge right now is that we're running everything on Google Vertex AI, and it's becoming extremely expensive. Last month alone we spent $120,000 on compute costs.
+
+[00:02:45] Michael Chen: Yeah, and the complexity is really killing us. We have data scientists who spend more time configuring Kubernetes clusters than actually building models. It takes us about six weeks to get a new model from prototype to production, which is way too slow in our industry.
+
+[00:03:02] Alex Rivera: Six weeks is quite long. What's causing most of that delay?
+
+[00:03:08] Michael Chen: A lot of it is infrastructure setup. We have to coordinate between multiple Google Cloud services - BigQuery for data, Cloud Storage for images, Vertex AI for training, and then Container Registry for deployment. Every handoff between these services adds complexity and potential failure points.
+
+[00:03:25] Dr. Sarah Kim: And don't get me started on cost transparency. I get these massive GCP bills, but I can't tell which specific ML experiments or models are driving the costs. Our CFO is constantly asking me to justify our cloud spend, and I honestly can't give him accurate answers.
+
+[00:03:41] Alex Rivera: That's a common challenge. What types of models are you building, and what's the business impact when they work well?
+
+[00:03:48] Dr. Sarah Kim: We're primarily doing computer vision for chest X-rays and CT scans. Our models can detect pneumonia, lung nodules, and other abnormalities with about 94% accuracy, which is better than many radiologists for certain conditions. When our models work well, we can reduce diagnostic time from hours to minutes.
+
+[00:04:12] Michael Chen: The business impact is huge. We have contracts with 15 hospital systems, and they're seeing 40% faster diagnosis times and 25% fewer missed diagnoses. But we're leaving money on the table because we can't scale fast enough.
+
+[00:04:25] Alex Rivera: What's preventing you from scaling faster?
+
+[00:04:28] Dr. Sarah Kim: Honestly, it's the operational overhead. We have a team of eight ML engineers, but two of them are basically full-time DevOps people just keeping our Vertex AI infrastructure running. That's 25% of our engineering capacity going to infrastructure instead of building new models.
+
+[00:04:45] Michael Chen: Plus, we're hitting some weird performance bottlenecks. Training our large vision models on Vertex AI takes about 18 hours, and we can only run two experiments in parallel before costs get crazy. Our data scientists are basically sitting around waiting for training jobs to finish.
+
+[00:05:02] Alex Rivera: Have you looked at any alternatives to Vertex AI?
+
+[00:05:06] Dr. Sarah Kim: We evaluated AWS SageMaker about six months ago, but it looked even more complex than what we have now. The learning curve would be massive, and we can't afford to stop shipping new models while we retrain our team.
+
+[00:05:18] Michael Chen: We also looked at Databricks, but their healthcare compliance story wasn't strong enough for our use case. We're dealing with HIPAA data, so we need really bulletproof governance and audit trails.
+
+[00:05:31] Alex Rivera: Compliance is definitely critical in healthcare. Tell me more about your data governance requirements.
+
+[00:05:37] Dr. Sarah Kim: We need complete lineage tracking from raw medical images through model training to final predictions. If a hospital questions a diagnosis, we need to trace exactly which data was used to train the model, what preprocessing was applied, and which model version made the prediction.
+
+[00:05:54] Michael Chen: Right now that's a nightmare across multiple Google Cloud services. We've built custom logging and tracking, but it's fragile and requires constant maintenance.
+
+[00:06:03] Alex Rivera: What would an ideal solution look like for you?
+
+[00:06:07] Dr. Sarah Kim: Simple answer - we want everything in one place. Our data is medical images and patient metadata, which is already in BigQuery. Ideally, we'd do all our ML training, deployment, and monitoring in the same platform where our data lives.
+
+[00:06:22] Michael Chen: And we need cost predictability. Right now I'm scared to let our data scientists experiment freely because I don't know if it'll cost us $10,000 or $100,000. We need transparent, predictable pricing.
+
+[00:06:35] Dr. Sarah Kim: Speed is huge too. If we could cut our model development time from six weeks to two weeks, we could probably double our revenue growth rate. We have a pipeline of 12 new model ideas, but we can only work on 2-3 at a time with our current infrastructure constraints.
+
+[00:06:52] Alex Rivera: That's a significant opportunity cost. Are there any specific technical requirements I should know about?
+
+[00:06:58] Michael Chen: We need GPU support for training our vision models, obviously. And we need to handle large datasets - some of our training sets are 500GB to 2TB of image data. Also, inference needs to be fast, under 30 seconds for a complete analysis.
+
+[00:07:15] Dr. Sarah Kim: And we need really strong security and compliance features. Any solution needs to be HIPAA compliant out of the box, not something we have to configure ourselves.
+
+[00:07:25] Alex Rivera: What's your timeline for making a decision?
+
+[00:07:28] Dr. Sarah Kim: We're hoping to have a new platform selected and start migration by March 2025. Our current GCP contract expires in June, so we have some negotiating leverage, but we also don't want to rush into the wrong solution.
+
+[00:07:42] Michael Chen: The board is putting pressure on us to reduce infrastructure costs by at least 30% while increasing our model deployment velocity. If we can't hit those targets, they're going to start questioning our technical strategy.
+
+[00:07:55] Alex Rivera: Those are reasonable goals. One last question - if you could wave a magic wand and solve your biggest ML infrastructure problem, what would it be?
+
+[00:08:04] Dr. Sarah Kim: I want my data scientists building models, not managing infrastructure. If we could eliminate all the operational overhead and just focus on the AI that saves lives, that would be transformational for our business and our patients.
+
+[00:08:17] Michael Chen: And I want cost transparency. I should be able to tell our CFO exactly what each model costs to develop and run in production. Right now it's all black box accounting.
+
+[End of relevant transcript excerpt] 
